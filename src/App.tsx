@@ -72,10 +72,35 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
-    setTimeout(() => setFormStatus('success'), 1500);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      service: formData.get('service'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormStatus('idle');
+      alert('Failed to send message. Please try again later.');
+    }
   };
 
   return (
@@ -211,7 +236,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Emergency Service</p>
-                      <p className="text-white font-black text-xl">(555) 123-4567</p>
+                      <p className="text-white font-black text-xl">(603) 722-3494</p>
                     </div>
                   </div>
                 </div>
@@ -342,7 +367,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Call Us</p>
-                      <p className="text-white font-bold text-lg">(555) 123-4567</p>
+                      <p className="text-white font-bold text-lg">(603) 722-3494</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
@@ -351,7 +376,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Email Us</p>
-                      <p className="text-white font-bold text-lg">hello@orangeblack.com</p>
+                      <p className="text-white font-bold text-lg">Spencer@splitsecondservices@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
@@ -360,7 +385,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Location</p>
-                      <p className="text-white font-bold text-lg">Serving the Greater Area</p>
+                      <p className="text-white font-bold text-lg">Greater Manchester Area</p>
                     </div>
                   </div>
                 </div>
@@ -392,6 +417,7 @@ export default function App() {
                         <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Name</label>
                         <input 
                           required
+                          name="name"
                           type="text" 
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
                         />
@@ -400,6 +426,7 @@ export default function App() {
                         <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</label>
                         <input 
                           required
+                          name="email"
                           type="email" 
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
                         />
@@ -407,11 +434,15 @@ export default function App() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Service Needed</label>
-                      <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none">
+                      <select 
+                        name="service"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none"
+                      >
                         <option className="bg-brand-black">General Repair</option>
-                        <option className="bg-brand-black">Plumbing</option>
+                        <option className="bg-brand-black">Technical Services</option>
                         <option className="bg-brand-black">Electrical</option>
                         <option className="bg-brand-black">Painting</option>
+                        <option className="bg-brand-black">Plumbing</option>
                         <option className="bg-brand-black">Other</option>
                       </select>
                     </div>
@@ -419,6 +450,7 @@ export default function App() {
                       <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Message</label>
                       <textarea 
                         required
+                        name="message"
                         rows={4}
                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all resize-none"
                       />
