@@ -21,15 +21,16 @@ async function startServer() {
 
     try {
       // 1. Send Email
+      // In Production (Cloud Run), these MUST be set in the Environment Variables section
       const smtpUser = process.env.SMTP_USER;
       const smtpPass = (process.env.SMTP_PASS || "").trim();
+      const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
       
       if (smtpUser && smtpPass) {
-        const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
-        const isGmail = smtpHost.includes("gmail.com");
+        const isGmail = smtpHost.includes("gmail.com") || smtpHost.includes("googlemail.com");
 
-        console.log(`Attempting to send email via ${isGmail ? 'Gmail' : smtpHost}`);
-        console.log(`User: ${smtpUser}`);
+        console.log(`[MAIL] Attempting to send email via ${isGmail ? 'Gmail Service' : smtpHost}`);
+        console.log(`[MAIL] Authenticating as: ${smtpUser}`);
 
         const transporterOptions: any = {
           host: smtpHost,
@@ -40,15 +41,18 @@ async function startServer() {
             pass: smtpPass,
           },
           tls: {
-            rejectUnauthorized: false
+            // This helps bypass issues with some hosting providers' certificates
+            rejectUnauthorized: false,
+            minVersion: 'TLSv1.2'
           },
-          connectionTimeout: 10000,
+          connectionTimeout: 10000, // 10 seconds
           greetingTimeout: 10000,
           socketTimeout: 10000,
         };
 
-        // Use Gmail service shortcut for better reliability
+        // Use Gmail service shortcut for better reliability if it's a Google-hosted account
         if (isGmail) {
+          console.log("[MAIL] Using Gmail Service shortcut for optimized delivery");
           delete transporterOptions.host;
           delete transporterOptions.port;
           delete transporterOptions.secure;
@@ -57,27 +61,49 @@ async function startServer() {
 
         const transporter = nodemailer.createTransport(transporterOptions);
 
+        // Verify connection configuration
+        try {
+          await transporter.verify();
+          console.log("[MAIL] SMTP Connection verified successfully");
+        } catch (verifyError) {
+          console.error("[MAIL] SMTP Verification Failed:", verifyError);
+          throw verifyError;
+        }
+
         await transporter.sendMail({
           from: `"Split Second Services" <${smtpUser}>`,
           to: "spencer@splitsecondservices.com",
+          replyTo: email, // So you can just hit 'Reply' to the customer
           subject: `New Quote Request: ${service}`,
           text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${message}`,
           html: `
-            <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-              <h2 style="color: #FF6321;">New Quote Request</h2>
-              <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Service:</strong> ${service}</p>
-              <p><strong>Message:</strong></p>
-              <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
-                ${message.replace(/\n/g, '<br>')}
+            <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; background-color: #f4f4f4;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;">
+                <div style="background-color: #141414; padding: 30px; text-align: center; border-bottom: 4px solid #FF6321;">
+                  <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: -1px; font-weight: 900;">SPLIT SECOND <span style="color: #FF6321;">SERVICES</span></h1>
+                </div>
+                <div style="padding: 40px;">
+                  <h2 style="color: #141414; margin-top: 0; font-size: 20px; font-weight: 800;">NEW QUOTE REQUEST</h2>
+                  <div style="margin: 30px 0; border-left: 4px solid #FF6321; padding-left: 20px;">
+                    <p style="margin: 10px 0; color: #666;"><strong style="color: #141414; text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Customer Name:</strong><br><span style="font-size: 16px; color: #141414;">${name}</span></p>
+                    <p style="margin: 10px 0; color: #666;"><strong style="color: #141414; text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Email Address:</strong><br><span style="font-size: 16px; color: #141414;">${email}</span></p>
+                    <p style="margin: 10px 0; color: #666;"><strong style="color: #141414; text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Service Requested:</strong><br><span style="font-size: 16px; color: #141414;">${service}</span></p>
+                  </div>
+                  <div style="background-color: #f9f9f9; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
+                    <strong style="color: #141414; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 10px;">Message:</strong>
+                    <p style="margin: 0; color: #444; line-height: 1.6; font-size: 15px;">${message.replace(/\n/g, '<br>')}</p>
+                  </div>
+                </div>
+                <div style="background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888;">
+                  This is an automated notification from your website.
+                </div>
               </div>
             </div>
           `,
         });
-        console.log("Email sent successfully");
+        console.log("[MAIL] Email sent successfully to spencer@splitsecondservices.com");
       } else {
-        console.warn("Email not sent. Missing SMTP_USER or SMTP_PASS.");
+        console.warn("[MAIL] Email not sent. Missing SMTP_USER or SMTP_PASS environment variables.");
         return res.status(500).json({ 
           error: "Service Temporarily Unavailable", 
           details: "The website owner has not finished setting up the email system. Please contact them directly at (603) 722-3494." 
