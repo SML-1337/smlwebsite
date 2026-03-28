@@ -30,7 +30,7 @@ const services = [
   },
   {
     title: "Technical Services",
-    description: "Smart home setup, circuit repairs, and technical maintenance.",
+    description: "Smart home setup, security system installs, and technical maintenance.",
     icon: Cpu,
   },
   {
@@ -298,8 +298,8 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=1000" 
-                alt="Tools"
+                src="https://images.unsplash.com/photo-1503387762-592dee58292b?auto=format&fit=crop&q=80&w=1000" 
+                alt="House under construction"
                 className="rounded-3xl shadow-2xl border border-white/10"
                 referrerPolicy="no-referrer"
               />
@@ -363,9 +363,9 @@ export default function App() {
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-black rounded-[3rem] overflow-hidden shadow-2xl">
+          <div className="bg-brand-black rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2 items-center">
-              <div className="p-10 lg:p-20">
+              <div className="p-6 sm:p-10 lg:p-20">
                 <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Contact Us</h2>
                 <h3 className="text-4xl lg:text-5xl font-black text-white mb-8">READY TO START?</h3>
                 <p className="text-gray-400 mb-12 max-w-md">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
@@ -401,7 +401,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-white/5 p-10 lg:p-20 lg:border-l border-t lg:border-t-0 border-white/10">
+              <div className="bg-white/5 p-6 sm:p-10 lg:p-20 lg:border-l border-t lg:border-t-0 border-white/10">
                 {formStatus === 'success' ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
