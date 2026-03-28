@@ -364,11 +364,11 @@ export default function App() {
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand-black rounded-[3rem] overflow-hidden shadow-2xl">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-12 lg:p-20">
+            <div className="grid lg:grid-cols-2 items-center">
+              <div className="p-10 lg:p-20">
                 <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Contact Us</h2>
                 <h3 className="text-4xl lg:text-5xl font-black text-white mb-8">READY TO START?</h3>
-                <p className="text-gray-400 mb-12">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
+                <p className="text-gray-400 mb-12 max-w-md">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
                 
                 <div className="space-y-8">
                   <div className="flex items-center gap-6">
@@ -401,7 +401,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-white/5 p-12 lg:p-20 border-l border-white/10">
+              <div className="bg-white/5 p-10 lg:p-20 lg:border-l border-t lg:border-t-0 border-white/10">
                 {formStatus === 'success' ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
