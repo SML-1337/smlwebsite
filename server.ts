@@ -21,23 +21,23 @@ async function startServer() {
 
     try {
       // 1. Send Email
-      if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-        const port = Number(process.env.SMTP_PORT) || 587;
-        const secure = process.env.SMTP_SECURE === "true" || port === 465;
-        const isGmail = process.env.SMTP_HOST.includes("gmail.com");
-        const pass = process.env.SMTP_PASS.trim();
+      const smtpUser = process.env.SMTP_USER;
+      const smtpPass = (process.env.SMTP_PASS || "").trim();
+      
+      if (smtpUser && smtpPass) {
+        const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
+        const isGmail = smtpHost.includes("gmail.com");
 
-        console.log(`Attempting to send email via ${isGmail ? 'Gmail' : process.env.SMTP_HOST}`);
-        console.log(`User: ${process.env.SMTP_USER}`);
-        console.log(`Password length: ${pass.length} characters`);
+        console.log(`Attempting to send email via ${isGmail ? 'Gmail' : smtpHost}`);
+        console.log(`User: ${smtpUser}`);
 
         const transporterOptions: any = {
-          host: process.env.SMTP_HOST,
-          port: port,
-          secure: secure,
+          host: smtpHost,
+          port: Number(process.env.SMTP_PORT) || 587,
+          secure: process.env.SMTP_SECURE === "true" || (process.env.SMTP_PORT === "465"),
           auth: {
-            user: process.env.SMTP_USER,
-            pass: pass,
+            user: smtpUser,
+            pass: smtpPass,
           },
           tls: {
             rejectUnauthorized: false
@@ -47,7 +47,7 @@ async function startServer() {
           socketTimeout: 10000,
         };
 
-        // Use Gmail service shortcut for better reliability if applicable
+        // Use Gmail service shortcut for better reliability
         if (isGmail) {
           delete transporterOptions.host;
           delete transporterOptions.port;
@@ -58,29 +58,29 @@ async function startServer() {
         const transporter = nodemailer.createTransport(transporterOptions);
 
         await transporter.sendMail({
-          from: `"Split Second Services" <${process.env.SMTP_USER}>`,
+          from: `"Split Second Services" <${smtpUser}>`,
           to: "spencer@splitsecondservices.com",
           subject: `New Quote Request: ${service}`,
           text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${message}`,
           html: `
-            <h3>New Quote Request</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Service:</strong> ${service}</p>
-            <p><strong>Message:</strong> ${message}</p>
+            <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+              <h2 style="color: #FF6321;">New Quote Request</h2>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Service:</strong> ${service}</p>
+              <p><strong>Message:</strong></p>
+              <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+                ${message.replace(/\n/g, '<br>')}
+              </div>
+            </div>
           `,
         });
         console.log("Email sent successfully");
       } else {
-        const missing = [];
-        if (!process.env.SMTP_HOST) missing.push("SMTP_HOST");
-        if (!process.env.SMTP_USER) missing.push("SMTP_USER");
-        if (!process.env.SMTP_PASS) missing.push("SMTP_PASS");
-        
-        console.warn(`Email not sent. Missing configuration: ${missing.join(", ")}`);
+        console.warn("Email not sent. Missing SMTP_USER or SMTP_PASS.");
         return res.status(500).json({ 
-          error: "Email service not configured", 
-          details: `Missing: ${missing.join(", ")}` 
+          error: "Service Temporarily Unavailable", 
+          details: "The website owner has not finished setting up the email system. Please contact them directly at (603) 722-3494." 
         });
       }
 
