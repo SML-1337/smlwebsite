@@ -91,15 +91,25 @@ export default function App() {
         body: JSON.stringify(data),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
         setFormStatus('success');
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(result.details || result.error || 'Failed to send message');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setFormStatus('idle');
-      alert('Failed to send message. Please try again later.');
+      
+      const message = error instanceof Error ? error.message : 'Failed to send message';
+      
+      // Use a more readable alert for long error messages
+      if (message.includes('App Password')) {
+        alert(`🚨 ACTION REQUIRED: GMAIL SETUP 🚨\n\n${message}`);
+      } else {
+        alert(`Error: ${message}. Please ensure your email settings are configured in the Secrets panel.`);
+      }
     }
   };
 
@@ -376,7 +386,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Email Us</p>
-                      <p className="text-white font-bold text-lg">Spencer@splitsecondservices@gmail.com</p>
+                      <p className="text-white font-bold text-lg">spencer@splitsecondservices.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
