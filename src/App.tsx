@@ -7,10 +7,8 @@ import { useState, FormEvent } from 'react';
 import { 
   Hammer, 
   Cpu,
-  Paintbrush, 
   Lightbulb, 
   Droplets, 
-  ShieldCheck, 
   Phone, 
   Mail, 
   MapPin, 
@@ -18,40 +16,60 @@ import {
   Menu,
   X,
   Star,
-  CheckCircle2
+  CheckCircle2,
+  Shield,
+  Square,
+  Wrench,
+  Filter,
+  Mountain
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const services = [
   {
-    title: "General Repairs",
-    description: "From squeaky doors to broken cabinets, we fix it all with precision.",
+    title: "General Repairs & Painting",
+    description: "Expert fixes for everything from cabinets to full room painting and touch-ups.",
     icon: Hammer,
   },
   {
-    title: "Technical Services",
-    description: "Smart home setup, security system installs, and technical maintenance.",
+    title: "Technical & Safety",
+    description: "Smart home setup, security system installs, and smoke detector safety upgrades.",
     icon: Cpu,
   },
   {
-    title: "Electrical",
-    description: "Light fixture installation, outlet repairs, and minor wiring.",
+    title: "Electrical Services",
+    description: "Light fixture installation, outlet repairs, and professional minor wiring.",
     icon: Lightbulb,
   },
   {
-    title: "Painting",
-    description: "Interior and exterior touch-ups or full room painting services.",
-    icon: Paintbrush,
-  },
-  {
-    title: "Plumbing",
-    description: "Leaky faucets, clogged drains, and pipe repairs handled quickly.",
+    title: "Plumbing & Pumps",
+    description: "Leaky faucets, pipe repairs, and well/sump pump maintenance.",
     icon: Droplets,
   },
   {
-    title: "Safety Upgrades",
-    description: "Smoke detector installation and home safety inspections.",
-    icon: ShieldCheck,
+    title: "Water Filtration",
+    description: "Installation and maintenance of whole-home water filtration systems.",
+    icon: Filter,
+  },
+  {
+    title: "Waterproofing",
+    description: "Basement and foundation waterproofing to protect your home from moisture.",
+    icon: Shield,
+  },
+  {
+    title: "Framing & Structural",
+    description: "Structural framing for additions, renovations, and new builds.",
+    icon: Square,
+  },
+  {
+    title: "Masonry & Repointing",
+    description: "Expert masonry repointing to restore and preserve your brickwork.",
+    icon: Wrench,
+  },
+  {
+    title: "Hardscape & Pergolas",
+    description: "Custom stone walkways, patios, retaining walls, and beautiful pergolas.",
+    icon: Mountain,
   },
 ];
 
@@ -233,8 +251,8 @@ export default function App() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden border-4 border-brand-orange/30 shadow-2xl relative group">
                 <img 
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Handyman at work"
+                  src="https://picsum.photos/seed/manchester-skyline-nh/1000/1000" 
+                  alt="Manchester NH Skyline"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -298,8 +316,8 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1503387762-592dee58292b?auto=format&fit=crop&q=80&w=1000" 
-                alt="House under construction"
+                src="https://picsum.photos/seed/old-man-mountain-nh/1000/1000" 
+                alt="Old Man of the Mountain"
                 className="rounded-3xl shadow-2xl border border-white/10"
                 referrerPolicy="no-referrer"
               />
@@ -448,12 +466,10 @@ export default function App() {
                         name="service"
                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none"
                       >
-                        <option className="bg-brand-black">General Repair</option>
-                        <option className="bg-brand-black">Technical Services</option>
-                        <option className="bg-brand-black">Electrical</option>
-                        <option className="bg-brand-black">Painting</option>
-                        <option className="bg-brand-black">Plumbing</option>
-                        <option className="bg-brand-black">Other</option>
+                        {services.map(s => (
+                          <option key={s.title} className="bg-brand-black" value={s.title}>{s.title}</option>
+                        ))}
+                        <option className="bg-brand-black" value="Other">Other</option>
                       </select>
                     </div>
                     <div className="space-y-2">
