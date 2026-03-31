@@ -29,12 +29,12 @@ import { motion, AnimatePresence } from 'motion/react';
 const services = [
   {
     title: "General Repairs & Painting",
-    description: "Expert fixes for everything from cabinets to full room painting and touch-ups.",
+    description: "Expert fixes for everything from cabinets to full room painting and touch-ups. Expert in creating punchlists and closing them out.",
     icon: Hammer,
   },
   {
     title: "Technical & Safety",
-    description: "Smart home setup, security system installs, and smoke detector safety upgrades.",
+    description: "Smart home setup, Home theater audio and visual, security system installs, and smoke detector safety upgrades.",
     icon: Cpu,
   },
   {
