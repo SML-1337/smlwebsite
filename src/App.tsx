@@ -21,7 +21,8 @@ import {
   Square,
   Wrench,
   Filter,
-  Mountain
+  Mountain,
+  Key
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -37,46 +38,31 @@ const services = [
     icon: Cpu,
   },
   {
-    title: "Electrical Services",
-    description: "Light fixture installation, outlet repairs, and professional minor wiring.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Plumbing & Pumps",
-    description: "Leaky faucets, pipe repairs, and well/sump pump maintenance.",
-    icon: Droplets,
-  },
-  {
-    title: "Water Filtration",
-    description: "Installation and maintenance of whole-home water filtration systems.",
-    icon: Filter,
+    title: "Lockout Services",
+    description: "Emergency home and automobile lockout assistance, available when you need it most.",
+    icon: Key,
   },
   {
     title: "Waterproofing",
-    description: "Basement and foundation waterproofing to protect your home from moisture.",
+    description: "Basement and foundation waterproofing, full envelope solutions, and finish glazing to protect your home from moisture.",
     icon: Shield,
   },
   {
     title: "Framing & Structural",
-    description: "Structural framing for additions, renovations, and new builds.",
+    description: "Structural framing for additions, renovations, new builds, and professional window and door installation.",
     icon: Square,
   },
   {
-    title: "Masonry & Repointing",
-    description: "Expert masonry repointing to restore and preserve your brickwork.",
-    icon: Wrench,
-  },
-  {
     title: "Hardscape & Pergolas",
-    description: "Custom stone walkways, patios, retaining walls, and beautiful pergolas.",
+    description: "Custom stone walkways, patios, retaining walls, beautiful pergolas, repointing, and light masonry.",
     icon: Mountain,
   },
 ];
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    text: "Quick, professional, and the orange truck is hard to miss! Highly recommend.",
+    name: "Alen Hasanic",
+    text: "Knowledgeable, on time, on the clock, gets it done!",
     rating: 5,
   },
   {
