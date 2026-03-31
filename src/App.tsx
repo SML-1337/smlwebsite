@@ -390,7 +390,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Email Us</p>
-                      <p className="text-white font-bold text-lg">spencer@splitsecondservices.com</p>
+                      <p className="text-white font-bold text-lg">splitsecondservicesllc@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">

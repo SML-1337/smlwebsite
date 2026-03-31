@@ -72,7 +72,7 @@ async function startServer() {
 
         await transporter.sendMail({
           from: `"Split Second Services" <${smtpUser}>`,
-          to: "spencer@splitsecondservices.com",
+          to: "splitsecondservicesllc@gmail.com",
           replyTo: email, // So you can just hit 'Reply' to the customer
           subject: `New Quote Request: ${service}`,
           text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${message}`,
@@ -101,7 +101,7 @@ async function startServer() {
             </div>
           `,
         });
-        console.log("[MAIL] Email sent successfully to spencer@splitsecondservices.com");
+        console.log("[MAIL] Email sent successfully to splitsecondservicesllc@gmail.com");
       } else {
         console.warn("[MAIL] Email not sent. Missing SMTP_USER or SMTP_PASS environment variables.");
         return res.status(500).json({ 
