@@ -240,16 +240,12 @@ export default function App() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden border-4 border-brand-orange/30 shadow-2xl relative group">
                 <img 
-                  src="https://github.com/SML-1337/smlwebsite/blob/main/manchester.jpg?raw=true" 
+                  src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/manchester.jpg" 
                   alt="Manchester NH Skyline"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
-                    const img = e.target as HTMLImageElement;
-                    if (img.src.includes('/main/')) {
-                      img.src = "https://raw.githubusercontent.com/SML-1337/smlwebsite/main/manchester.jpg";
-                    } else if (img.src.includes('raw.githubusercontent.com')) {
-                      img.src = "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c3?auto=format&fit=crop&q=80&w=1000";
-                    }
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c3?auto=format&fit=crop&q=80&w=1000";
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
@@ -312,16 +308,12 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img 
-                src="https://github.com/SML-1337/smlwebsite/blob/main/mountain.jpg?raw=true" 
+                src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/mountain.jpg" 
                 alt="Old Man of the Mountain"
                 className="rounded-3xl shadow-2xl border border-white/10 w-full"
+                referrerPolicy="no-referrer"
                 onError={(e) => {
-                  const img = e.target as HTMLImageElement;
-                  if (img.src.includes('/main/')) {
-                    img.src = "https://raw.githubusercontent.com/SML-1337/smlwebsite/main/mountain.jpg";
-                  } else if (img.src.includes('raw.githubusercontent.com')) {
-                    img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/OldManMountain.jpg/800px-OldManMountain.jpg";
-                  }
+                  (e.target as HTMLImageElement).src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/OldManMountain.jpg/800px-OldManMountain.jpg";
                 }}
               />
               <div className="absolute -bottom-8 -right-8 bg-brand-orange p-8 rounded-3xl shadow-2xl hidden md:block">
