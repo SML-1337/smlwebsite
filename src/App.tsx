@@ -351,8 +351,8 @@ export default function App() {
       <section id="testimonials" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Reviews</h2>
-            <p className="text-4xl font-black text-brand-black">WHAT CLIENTS SAY</p>
+            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Google reviews!</h2>
+            <p className="text-4xl font-black text-brand-black">Google reviews!</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((t) => (
