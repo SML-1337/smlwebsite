@@ -205,10 +205,13 @@ export default function App() {
                 <CheckCircle2 className="w-4 h-4" />
                 Trusted Local Professional
               </div>
-              <h1 className="text-5xl lg:text-7xl font-black text-white leading-[0.9] tracking-tight mb-8">
+              <h1 className="text-5xl lg:text-7xl font-black text-white leading-[0.9] tracking-tight mb-4">
                 WE FIX WHAT <br />
                 <span className="text-brand-orange">OTHERS CAN'T.</span>
               </h1>
+              <p className="text-brand-orange font-black tracking-widest text-sm uppercase mb-8">
+                Serving THE Greater Manchester Area
+              </p>
               <p className="text-xl text-gray-400 max-w-lg mb-10 leading-relaxed">
                 Premium handyman services for your home and office. Reliable, efficient, and built on a foundation of quality craftsmanship.
               </p>
