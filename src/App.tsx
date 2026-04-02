@@ -240,18 +240,10 @@ export default function App() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden border-4 border-brand-orange/30 shadow-2xl relative group">
                 <img 
-                  src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/manchester.jpg" 
-                  alt="Manchester NH Skyline"
+                  src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Professional Handyman at Work"
                   className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const img = e.target as HTMLImageElement;
-                    if (img.src.includes('raw.githubusercontent.com')) {
-                      img.src = "https://github.com/SML-1337/smlwebsite/blob/main/manchester.jpg?raw=true";
-                    } else if (img.src.includes('?raw=true')) {
-                      img.src = "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c3?auto=format&fit=crop&q=80&w=1000";
-                    }
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-6 left-6 right-6 p-6 bg-brand-black/80 backdrop-blur-md rounded-2xl border border-white/10">
@@ -313,17 +305,12 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img 
-                src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/mountain.jpg" 
-                alt="Old Man of the Mountain"
+                src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000" 
+                alt="Professional Tools and Craftsmanship"
                 className="rounded-3xl shadow-2xl border border-white/10 w-full object-cover"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
-                  const img = e.target as HTMLImageElement;
-                  if (img.src.includes('raw.githubusercontent.com')) {
-                    img.src = "https://github.com/SML-1337/smlwebsite/blob/main/mountain.jpg?raw=true";
-                  } else if (img.src.includes('?raw=true')) {
-                    img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/OldManMountain.jpg/800px-OldManMountain.jpg";
-                  }
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=1000";
                 }}
               />
               <div className="absolute -bottom-8 -right-8 bg-brand-orange p-8 rounded-3xl shadow-2xl hidden md:block">
