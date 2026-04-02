@@ -237,7 +237,7 @@ export default function App() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden border-4 border-brand-orange/30 shadow-2xl relative group">
                 <img 
-                  src="https://picsum.photos/seed/manchester-skyline-nh/1000/1000" 
+                  src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/city%20of%20manchester.webp" 
                   alt="Manchester NH Skyline"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -302,7 +302,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img 
-                src="https://picsum.photos/seed/old-man-mountain-nh/1000/1000" 
+                src="https://raw.githubusercontent.com/SML-1337/smlwebsite/main/man%20on%20the%20mountain.jpg" 
                 alt="Old Man of the Mountain"
                 className="rounded-3xl shadow-2xl border border-white/10"
                 referrerPolicy="no-referrer"
