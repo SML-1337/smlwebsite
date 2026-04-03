@@ -376,35 +376,35 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand-black rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2 items-stretch">
-              <div className="p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+              <div className="p-8 sm:p-12 lg:p-20 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
                 <h2 className="text-xs sm:text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Contact Us</h2>
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">READY TO START?</h3>
-                <p className="text-gray-400 mb-10 sm:mb-12 max-w-md text-base sm:text-lg leading-relaxed">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
+                <p className="text-gray-400 mb-10 sm:mb-12 max-w-md text-base sm:text-lg leading-relaxed mx-auto lg:mx-0">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
                 
-                <div className="space-y-6 sm:space-y-8">
-                  <a href="tel:6037223494" className="flex items-center gap-4 sm:gap-6 group">
+                <div className="space-y-6 sm:space-y-8 w-full">
+                  <a href="tel:6037223494" className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 group">
                     <div className="bg-white/5 p-3 sm:p-4 rounded-2xl group-hover:bg-brand-orange/20 transition-colors">
                       <Phone className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center sm:items-start">
                       <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Call Us</p>
                       <p className="text-white font-bold text-base sm:text-lg group-hover:text-brand-orange transition-colors">(603) 722-3494</p>
                     </div>
                   </a>
-                  <a href="mailto:splitsecondservicesllc@gmail.com" className="flex items-center gap-4 sm:gap-6 group">
+                  <a href="mailto:splitsecondservicesllc@gmail.com" className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 group">
                     <div className="bg-white/5 p-3 sm:p-4 rounded-2xl group-hover:bg-brand-orange/20 transition-colors">
                       <Mail className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div className="min-w-0">
+                    <div className="flex flex-col items-center sm:items-start min-w-0">
                       <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Email Us</p>
-                      <p className="text-white font-bold text-base sm:text-lg group-hover:text-brand-orange transition-colors truncate">splitsecondservicesllc@gmail.com</p>
+                      <p className="text-white font-bold text-base sm:text-lg group-hover:text-brand-orange transition-colors truncate max-w-full">splitsecondservicesllc@gmail.com</p>
                     </div>
                   </a>
-                  <div className="flex items-center gap-4 sm:gap-6">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
                     <div className="bg-white/5 p-3 sm:p-4 rounded-2xl">
                       <MapPin className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center sm:items-start">
                       <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Location</p>
                       <p className="text-white font-bold text-base sm:text-lg">Greater Manchester Area</p>
                     </div>
