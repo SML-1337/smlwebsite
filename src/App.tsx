@@ -22,7 +22,8 @@ import {
   Wrench,
   Filter,
   Mountain,
-  Key
+  Key,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -371,47 +372,47 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white">
+      <section id="contact" className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-black rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
-            <div className="grid lg:grid-cols-2 items-center">
-              <div className="p-6 sm:p-10 lg:p-20">
-                <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Contact Us</h2>
-                <h3 className="text-4xl lg:text-5xl font-black text-white mb-8">READY TO START?</h3>
-                <p className="text-gray-400 mb-12 max-w-md">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
+          <div className="bg-brand-black rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="grid lg:grid-cols-2 items-stretch">
+              <div className="p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+                <h2 className="text-xs sm:text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Contact Us</h2>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">READY TO START?</h3>
+                <p className="text-gray-400 mb-10 sm:mb-12 max-w-md text-base sm:text-lg leading-relaxed">Fill out the form and we'll get back to you within 24 hours with a free estimate.</p>
                 
-                <div className="space-y-8">
-                  <div className="flex items-center gap-6">
-                    <div className="bg-white/5 p-4 rounded-2xl">
-                      <Phone className="text-brand-orange w-6 h-6" />
+                <div className="space-y-6 sm:space-y-8">
+                  <a href="tel:6037223494" className="flex items-center gap-4 sm:gap-6 group">
+                    <div className="bg-white/5 p-3 sm:p-4 rounded-2xl group-hover:bg-brand-orange/20 transition-colors">
+                      <Phone className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Call Us</p>
-                      <p className="text-white font-bold text-lg">(603) 722-3494</p>
+                      <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Call Us</p>
+                      <p className="text-white font-bold text-base sm:text-lg group-hover:text-brand-orange transition-colors">(603) 722-3494</p>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="bg-white/5 p-4 rounded-2xl">
-                      <Mail className="text-brand-orange w-6 h-6" />
+                  </a>
+                  <a href="mailto:splitsecondservicesllc@gmail.com" className="flex items-center gap-4 sm:gap-6 group">
+                    <div className="bg-white/5 p-3 sm:p-4 rounded-2xl group-hover:bg-brand-orange/20 transition-colors">
+                      <Mail className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Email Us</p>
+                      <p className="text-white font-bold text-base sm:text-lg group-hover:text-brand-orange transition-colors truncate">splitsecondservicesllc@gmail.com</p>
+                    </div>
+                  </a>
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <div className="bg-white/5 p-3 sm:p-4 rounded-2xl">
+                      <MapPin className="text-brand-orange w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Email Us</p>
-                      <p className="text-white font-bold text-lg">splitsecondservicesllc@gmail.com</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="bg-white/5 p-4 rounded-2xl">
-                      <MapPin className="text-brand-orange w-6 h-6" />
-                    </div>
-                    <div>
-                      <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Location</p>
-                      <p className="text-white font-bold text-lg">Greater Manchester Area</p>
+                      <p className="text-gray-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Location</p>
+                      <p className="text-white font-bold text-base sm:text-lg">Greater Manchester Area</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/5 p-6 sm:p-10 lg:p-20 lg:border-l border-t lg:border-t-0 border-white/10">
+              <div className="bg-white/5 p-8 sm:p-12 lg:p-20 lg:border-l border-t lg:border-t-0 border-white/10">
                 {formStatus === 'success' ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -431,51 +432,60 @@ export default function App() {
                     </button>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-6">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Name</label>
+                        <label className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Name</label>
                         <input 
                           required
                           name="name"
                           type="text" 
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
+                          placeholder="Your Name"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 sm:py-4 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all placeholder:text-gray-600"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</label>
+                        <label className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Email</label>
                         <input 
                           required
                           name="email"
                           type="email" 
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
+                          placeholder="your@email.com"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 sm:py-4 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all placeholder:text-gray-600"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Service Needed</label>
-                      <select 
-                        name="service"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none"
-                      >
-                        {services.map(s => (
-                          <option key={s.title} className="bg-brand-black" value={s.title}>{s.title}</option>
-                        ))}
-                        <option className="bg-brand-black" value="Other">Other</option>
-                      </select>
+                      <label className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Service Needed</label>
+                      <div className="relative">
+                        <select 
+                          name="service"
+                          className="w-full bg-brand-black border border-white/10 rounded-xl px-4 py-3 sm:py-4 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none cursor-pointer"
+                        >
+                          <option value="" disabled selected>Select a Service</option>
+                          {services.map(s => (
+                            <option key={s.title} value={s.title}>{s.title}</option>
+                          ))}
+                          <option value="Other">Other</option>
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                          <ChevronDown className="w-4 h-4" />
+                        </div>
+                      </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Message</label>
+                      <label className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Message</label>
                       <textarea 
                         required
                         name="message"
                         rows={4}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all resize-none"
+                        placeholder="How can we help you?"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 sm:py-4 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all resize-none placeholder:text-gray-600"
                       />
                     </div>
                     <button 
                       disabled={formStatus === 'submitting'}
-                      className="w-full bg-brand-orange text-white py-4 rounded-xl font-black text-lg hover:shadow-[0_0_20px_rgba(255,99,33,0.3)] transition-all disabled:opacity-50"
+                      className="w-full bg-brand-orange text-white py-4 sm:py-5 rounded-xl font-black text-base sm:text-lg hover:shadow-[0_0_30px_rgba(255,99,33,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100"
                     >
                       {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
                     </button>
