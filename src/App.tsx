@@ -34,7 +34,7 @@ const services = [
   },
   {
     title: "Technical & Safety",
-    description: "Smart home setup, Home theater audio and visual, security system installs, and smoke detector safety upgrades.",
+    description: "Smart home setup, Home theater audio and visual, security system installs, smoke detector safety upgrades, EIN numbers, and business startups.",
     icon: Cpu,
   },
   {
@@ -508,6 +508,11 @@ export default function App() {
                 <a key={item} href="#" className="text-gray-500 hover:text-white text-sm transition-colors">{item}</a>
               ))}
             </div>
+          </div>
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 text-[10px] uppercase tracking-widest font-bold opacity-50">
+              Want a website like this? <a href="#contact" className="hover:text-brand-orange transition-colors underline decoration-brand-orange/30">Contact us!</a>
+            </p>
           </div>
         </div>
       </footer>
