@@ -462,9 +462,10 @@ export default function App() {
                       <div className="relative">
                         <select 
                           name="service"
+                          defaultValue=""
                           className="w-full bg-brand-black border border-white/10 rounded-xl px-4 py-3 sm:py-4 text-white focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all appearance-none cursor-pointer"
                         >
-                          <option value="" disabled selected>Select a Service</option>
+                          <option value="" disabled>Select a Service</option>
                           {services.map(s => (
                             <option key={s.title} value={s.title}>{s.title}</option>
                           ))}
