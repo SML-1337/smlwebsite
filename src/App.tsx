@@ -23,14 +23,16 @@ import {
   Filter,
   Mountain,
   Key,
-  ChevronDown
+  ChevronDown,
+  Sparkles,
+  ClipboardCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const services = [
   {
-    title: "General Repairs & Painting",
-    description: "Expert fixes for everything from cabinets to full room painting and touch-ups. Expert in creating punchlists and closing them out.",
+    title: "General Repairs & Graffiti Removal",
+    description: "Expert fixes for everything from cabinets to professional graffiti removal and touch-ups. Expert in creating punchlists and closing them out.",
     icon: Hammer,
   },
   {
@@ -44,9 +46,9 @@ const services = [
     icon: Key,
   },
   {
-    title: "Waterproofing",
-    description: "Basement and foundation waterproofing, full envelope solutions, and finish glazing to protect your home from moisture.",
-    icon: Shield,
+    title: "General Contracting",
+    description: "Comprehensive project management and general contracting services for residential projects, ensuring quality and structural integrity.",
+    icon: ClipboardCheck,
   },
   {
     title: "Framing & Structural",
@@ -54,9 +56,9 @@ const services = [
     icon: Square,
   },
   {
-    title: "Hardscape & Pergolas",
-    description: "Custom stone walkways, patios, retaining walls, beautiful pergolas, repointing, and light masonry.",
-    icon: Mountain,
+    title: "Cleaning Services (Aviation & Home)",
+    description: "Premium cleaning solutions specialized for both aviation environments and luxury homes, maintaining the highest standards of cleanliness.",
+    icon: Sparkles,
   },
 ];
 
