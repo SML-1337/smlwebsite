@@ -31,33 +31,33 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const services = [
   {
-    title: "General Repairs & Graffiti Removal",
-    description: "Expert fixes for everything from cabinets to professional graffiti removal and touch-ups. Expert in creating punchlists and closing them out.",
+    title: "General Repairs & Installation",
+    description: "TV mounts, product assembly, drywall repair, paint touch-ups, small renovations, and routine property maintenance.",
     icon: Hammer,
   },
   {
-    title: "Technical & Safety",
-    description: "Smart home setup, Home theater audio and visual, security system installs, smoke detector safety upgrades, EIN numbers, and business startups.",
+    title: "Tech & Business Solutions",
+    description: "Smart home setup, security system installs, EIN registration, website building, and professional business startup guidance.",
     icon: Cpu,
   },
   {
-    title: "Lockout Services",
-    description: "Emergency home and automobile lockout assistance, available when you need it most.",
+    title: "Emergency Roadside & Lockouts",
+    description: "Professional entry specialist for car and home lockouts, equipped with on-board jump packs for rapid roadside response.",
     icon: Key,
   },
   {
-    title: "General Contracting",
-    description: "Comprehensive project management and general contracting services for residential projects, ensuring quality and structural integrity.",
+    title: "Construction & Contracting",
+    description: "Framing, building envelope expertise, project supervision, doors/windows, and rapid punch-list completion.",
     icon: ClipboardCheck,
   },
   {
-    title: "Framing & Structural",
-    description: "Structural framing for additions, renovations, new builds, and professional window and door installation.",
+    title: "Property Assessment & Maintenance",
+    description: "Comprehensive safety walkthroughs, structural damage inspection, and preventative maintenance guidance for roofs and exteriors.",
     icon: Square,
   },
   {
-    title: "Cleaning Services (Aviation & Home)",
-    description: "Premium cleaning solutions specialized for both aviation environments and luxury homes, maintaining the highest standards of cleanliness.",
+    title: "Luxury Detailing & Cleaning",
+    description: "Premium cleaning and detailing services specialized for high-end residential properties, private jets, and luxury automobiles.",
     icon: Sparkles,
   },
 ];
@@ -213,7 +213,7 @@ export default function App() {
                 <span className="text-brand-orange">OTHERS CAN'T.</span>
               </h1>
               <p className="text-brand-orange font-black tracking-widest text-sm uppercase mb-8">
-                Serving THE Greater Manchester Area
+                Serving the Greater Manchester Area
               </p>
               <p className="text-xl text-gray-400 max-w-lg mb-10 leading-relaxed">
                 Premium handyman services for your home and office. Reliable, efficient, and built on a foundation of quality craftsmanship.
@@ -273,9 +273,9 @@ export default function App() {
       <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">What We Do</h2>
+            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Our Expertise</h2>
             <p className="text-4xl lg:text-5xl font-black text-brand-black tracking-tight">
-              COMPLETE HOME SOLUTIONS
+              VERSATILE SERVICE SOLUTIONS
             </p>
           </div>
 
@@ -287,13 +287,14 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group p-8 rounded-3xl bg-gray-50 hover:bg-brand-black transition-all duration-500 border border-transparent hover:border-brand-orange/30"
+                className="group p-8 rounded-[2rem] bg-gray-50 hover:bg-brand-black transition-all duration-500 border border-transparent hover:border-brand-orange/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] relative overflow-hidden"
               >
-                <div className="bg-brand-orange/10 group-hover:bg-brand-orange p-4 rounded-2xl inline-block mb-6 transition-colors">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-orange/10 transition-colors" />
+                <div className="bg-brand-orange/10 group-hover:bg-brand-orange p-4 rounded-2xl inline-block mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm group-hover:shadow-brand-orange/40">
                   <service.icon className="w-8 h-8 text-brand-orange group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-2xl font-black mb-4 group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-gray-600 group-hover:text-gray-400 transition-colors leading-relaxed">
+                <h3 className="text-2xl font-black mb-4 group-hover:text-white transition-colors leading-tight">{service.title}</h3>
+                <p className="text-gray-600 group-hover:text-gray-400 transition-colors leading-relaxed font-medium">
                   {service.description}
                 </p>
               </motion.div>
@@ -354,8 +355,8 @@ export default function App() {
       <section id="testimonials" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Google reviews!</h2>
-            <p className="text-4xl font-black text-brand-black">Google reviews!</p>
+            <h2 className="text-sm font-black text-brand-orange uppercase tracking-[0.2em] mb-4">Client Feedback</h2>
+            <p className="text-4xl font-black text-brand-black">WHAT OUR CUSTOMERS SAY</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((t) => (
